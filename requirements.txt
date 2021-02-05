@@ -1,0 +1,10 @@
+foolbox
+matplotlib
+numpy
+pandas
+PyYAML
+scikit-learn
+torch
+torchvision
+tqdm
+wandb

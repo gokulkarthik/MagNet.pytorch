@@ -1,0 +1,9 @@
+attack_id,attack_function,epsilons
+0,None,0
+1,fb.attacks.FGSM(),0.01
+2,fb.attacks.FGSM(),0.1
+3,fb.attacks.L2PGD(),0.01
+4,fb.attacks.L2PGD(),0.1
+5,fb.attacks.L2PGD(),0.5
+6,fb.attacks.L2DeepFoolAttack(),0.1,
+7,fb.attacks.L2CarliniWagnerAttack(steps=1000),0.1

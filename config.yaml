@@ -1,0 +1,46 @@
+train_classifier:
+  seed: 0
+  dataset: cifar-10 # {mnist, fashion-mnist, cifar-10}
+  classifier: classifier-2 # {classifier-1, classifier-2}
+  num_epochs: 200
+  batch_size: 32
+  lr: 0.01
+  step_size: 10
+  gamma: 0.9
+  interval_log_loss: 1 # in unit epoch
+  interval_checkpoint: 50 # in unit epoch
+
+train_defensive_model:
+  seed: 0
+  dataset: cifar-10 # {mnist, fashion-mnist, cifar-10}
+  defensive_model: defensive-model-2 # {defensive-model-1, defensive-model-2}
+  num_epochs: 100
+  batch_size: 256
+  lr: 0.001
+  step_size: 10
+  gamma: 0.95
+  weight_input_noise: 0.1
+  weight_regularizer: 1.e-9
+  interval_log_loss: 1 # in unit epoch
+  interval_log_images: 10 # in unit epoch
+  interval_checkpoint: 25 # in unit epoch
+  num_samples: 24 # number of interval_log_images
+
+generate_adversarial_examples:
+  seed: 0
+  dataset: cifar-10 # {mnist, fashion-mnist, cifar-10}
+  attack_model: classifier-2 # {classifier-1, classifier-2}
+  save_path: attacks
+
+evaluate_defensive_model:
+  dataset_name: cifar-10 # {mnist, fashion-mnist, cifar-10}
+  defensive_models_path: models
+  defensive_model_name: defensive-model-2 # {defensive-model-1, defensive-model-2}
+  classifier_models_path: models
+  classifier_model_name: classifier-2 # {classifier-1, classifier-2}
+  attacks_data_path: attacks
+  attack_model_name: classifier-2 # {classifier-1, classifier-2}
+  batch_size: 1024
+  result_path: results
+  visualize: True
+  visualization_path: visualizations
